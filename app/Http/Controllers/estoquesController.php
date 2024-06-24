@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Estoques; // Corrigido o nome da classe
+
+class estoquesController extends Controller
+{
+    public function index()
+    {
+        $estoques = Estoques::all();
+        return view('Estoques.index')->with('estoques', $estoques);
+    }
+
+    public function create()
+    {
+        return view('Estoques.create');
+    }
+
+    public function store(Request $request)
+    {
+        // Validação dos dados
+        $request->validate([
+            'produto_id' => 'required|exists:produtos,id',
+            'local_id' => 'required|exists:locais,id',
+            'quantidade' => 'required|integer|min:0',
+        ]);
+
+        // Criação de um novo estoque
+        $estoque = new Estoques();
+        $estoque->produto_id = $request->input('produto_id');
+        $estoque->local_id = $request->input('local_id');
+        $estoque->quantidade = $request->input('quantidade');
+        $estoque->save();
+
+        // Redirecionamento com mensagem de sucesso
+        return redirect()->route('estoques.index')->with('msg', 'Estoque cadastrado com sucesso!');
+    }
+
+    public function show($id)
+    {
+        $estoque = Estoques::find($id);
+        if ($estoque) {
+            return view('Estoques.show')->with('estoque', $estoque);
+        } else {
+            return view('Estoques.show')->with('msg', 'Estoque não encontrado!');
+        }
+    }
+
+    public function edit($id)
+    {
+        $estoque = Estoques::find($id);
+        if (!$estoque) {
+            return redirect()->route('estoques.index')->with('msg', 'Estoque não encontrado!');
+        }
+
+        return view('Estoques.edit')->with('estoque', $estoque);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validação dos dados
+        $request->validate([
+            'produto_id' => 'required|exists:produtos,id',
+            'local_id' => 'required|exists:locais,id',
+            'quantidade' => 'required|integer|min:0',
+        ]);
+
+        // Busca o estoque pelo ID
+        $estoque = Estoques::find($id);
+        if (!$estoque) {
+            return redirect()->route('estoques.index')->with('msg', 'Estoque não encontrado!');
+        }
+
+        // Atualiza os dados do estoque com base nos dados do formulário
+        $estoque->produto_id = $request->input('produto_id');
+        $estoque->local_id = $request->input('local_id');
+        $estoque->quantidade = $request->input('quantidade');
+        $estoque->save();
+
+        // Redireciona de volta para a lista de estoques com mensagem de sucesso
+        return redirect()->route('estoques.index')->with('msg', 'Estoque atualizado com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $estoque = Estoques::find($id);
+        if (!$estoque) {
+            return redirect()->route('estoques.index')->with('msg', 'Estoque não encontrado!');
+        }
+
+        $estoque->delete();
+
+        return redirect()->route('estoques.index')->with('msg', 'Estoque excluído com sucesso!');
+    }
+}
