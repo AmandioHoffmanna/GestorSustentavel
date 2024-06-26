@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class locais extends Model
+class Locais extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome', 'endereco'];
+
+    public function estoques()
+    {
+        return $this->hasMany(Estoques::class);
+    }
 }

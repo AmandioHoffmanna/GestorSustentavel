@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuarios;
+use Illuminate\Support\Facades\Hash;
 
 class usuariosController extends Controller
 {
@@ -12,9 +13,7 @@ class usuariosController extends Controller
      */
     public function index()
     {
-        //..recuperando os usuarios do banco de dados
         $usuarios = Usuarios::all();
-        //..retorna a view index passando a variável $usuarios
         return view('usuarios.index')->with('usuarios', $usuarios);
     }
 
@@ -23,8 +22,7 @@ class usuariosController extends Controller
      */
     public function create()
     {
-         //..mostrando o formulário de cadastro
-         return view('usuarios.create');
+        return view('usuarios.create');
     }
 
     /**
@@ -32,89 +30,96 @@ class usuariosController extends Controller
      */
     public function store(Request $request)
     {
-    // Validação dos dados
-    $request->validate([
-        'nome' => 'required|string|max:255',
-        'cpf' => 'required|string|max:20', 
-    ]);
+        // Validação dos dados
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|max:20|unique:usuarios', // CPF único na tabela usuarios
+            'email' => 'required|string|email|unique:usuarios|max:255', // Email único na tabela usuarios
+            'password' => 'required|string|min:8',
+        ]);
 
-    // Instancia um novo model usuario
-    $usuarios = new Usuarios(); // Note que a classe Usuarios deve estar capitalizada corretamente
-    // Pega os dados vindos do form e seta no model
-    $usuarios->nome = $request->input('nome');
-    $usuarios->cpf = $request->input('cpf');
-    // Persiste o model na base de dados
-    $usuarios->save();
-    // Retorna a view com uma variável msg que será tratada na própria view
-    $usuarios = Usuarios::all();
-    return view('usuarios.index')->with('usuarios', $usuarios)
-        ->with('msg', 'Usuário cadastrado com sucesso!'); 
+        // Criação de um novo usuário
+        $usuario = new Usuarios();
+        $usuario->nome = $request->input('nome');
+        $usuario->cpf = $request->input('cpf');
+        $usuario->email = $request->input('email');
+        $usuario->password = Hash::make($request->input('password'));
+        $usuario->save();
+
+        // Redirecionamento com mensagem de sucesso
+        return redirect()->route('usuarios.index')->with('msg', 'Usuário cadastrado com sucesso!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //..recupera o usuario da base de dados
-         $usuarios = usuarios::find($id);
-        //..se encontrar o usuario, retorna a view com o objeto correspondente
-        if ($usuarios) {
-         return view('usuarios.show')->with('usuarios', $usuarios);
+        $usuario = Usuarios::find($id);
+        if ($usuario) {
+            return view('usuarios.show')->with('usuario', $usuario);
         } else {
-         //..senão, retorna a view com uma mensagem que será exibida.
-         return view('usuarios.show')->with('msg', 'Usuarios não encontrado!');
+            return view('usuarios.show')->with('msg', 'Usuário não encontrado!');
         }
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-       //..recupera o usuario da base de dados
-       $usuarios = usuarios::find($id);
-        //..se encontrar o usuario, retorna a view de ediçãcom com o objeto correspondente
-        if ($usuarios) {
-           return view('usuarios.edit')->with('usuarios', $usuarios);
+        $usuario = Usuarios::find($id);
+        if ($usuario) {
+            return view('usuarios.edit')->with('usuario', $usuario);
         } else {
-         //..senão, retorna a view de edição com uma mensagem que será exibida.
-         $usuarios = usuarios::all();            
-         return view('usuarios.index')->with('usuarios', $usuarios)
-             ->with('msg', 'Usuário não encontrado!');
+            return redirect()->route('usuarios.index')->with('msg', 'Usuário não encontrado!');
         }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //..recupera o usuario mediante o id
-        $usuarios = usuarios::find($id);
-        //..atualiza os atributos do objeto recuperado com os dados do objeto Request
-        $usuarios->nome = $request->input('nome');
-        $usuarios->cpf = $request->input('cpf');
-        //..persite as alterações na base de dados
-        $usuarios->save();
-        //..retorna a view index com uma mensagem
-        $usuarios = usuarios::all();
-        return view('usuarios.index')->with('usuarios', $usuarios)
-            ->with('msg', 'Usuário atualizado com sucesso!');
+        // Validação dos dados
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|max:20|unique:usuarios,cpf,' . $id,
+            'email' => 'required|string|email|max:255|unique:usuarios,email,' . $id,
+        ]);
+
+        // Busca o usuário pelo ID
+        $usuario = Usuarios::find($id);
+        if (!$usuario) {
+            return redirect()->route('usuarios.index')->with('msg', 'Usuário não encontrado!');
+        }
+
+        // Atualiza os dados do usuário com base nos dados do formulário
+        $usuario->nome = $request->input('nome');
+        $usuario->cpf = $request->input('cpf');
+        $usuario->email = $request->input('email');
+        // Verifica se há uma senha nova para atualizar
+        if ($request->filled('password')) {
+            $usuario->password = Hash::make($request->input('password'));
+        }
+        $usuario->save();
+
+        // Redireciona de volta para a lista de usuários com mensagem de sucesso
+        return redirect()->route('usuarios.index')->with('msg', 'Usuário atualizado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //..recupeara o recurso a ser excluído
-        $usuarios = usuarios::find($id);
-        //..exclui o recurso
-        $usuarios->delete();
-        //..retorna à view index.
-        $usuarios = usuarios::all();
-        return view('usuarios.index')->with('usuarios', $usuarios)
-         ->with('msg', "Usuário excluído com sucesso!");
+        $usuario = Usuarios::find($id);
+        if (!$usuario) {
+            return redirect()->route('usuarios.index')->with('msg', 'Usuário não encontrado!');
+        }
+
+        $usuario->delete();
+
+        return redirect()->route('usuarios.index')->with('msg', 'Usuário excluído com sucesso!');
     }
 }

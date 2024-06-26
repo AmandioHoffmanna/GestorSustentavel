@@ -1,41 +1,21 @@
-{{-- resources/views/auth/login.blade.php --}}
-@extends('base')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Login</h2>
-        {{-- Exibir mensagens de erro de validação --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+    <h2>Login</h2>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+    <form action="{{ route('login') }}" method="POST">
+        @csrf
 
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" name="email" id="email" required class="form-control" value="{{ old('email') }}">
-            </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
 
-            <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" name="password" id="password" required class="form-control">
-            </div>
+        <div>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
 
-            <div class="form-group">
-                <input type="checkbox" name="remember" id="remember">
-                <label for="remember">Lembrar-me</label>
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-        </form>
-    </div>
+        <button type="submit">Login</button>
+    </form>
 @endsection

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('cpf')->unique();
+            $table->string('email')->unique(); 
+            $table->string('password'); 
             $table->timestamps();
         });
     }
@@ -27,3 +29,4 @@ return new class extends Migration
         Schema::dropIfExists('usuarios');
     }
 };
+

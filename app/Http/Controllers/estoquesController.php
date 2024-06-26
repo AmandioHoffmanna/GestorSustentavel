@@ -3,19 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Estoques; // Corrigido o nome da classe
+use App\Models\Estoques;
+use App\Models\Produtos;
+use App\Models\Locais;
+use App\Models\usuarios; 
+use Illuminate\Support\Facades\Auth;
 
-class estoquesController extends Controller
+class EstoquesController extends Controller
 {
     public function index()
     {
-        $estoques = Estoques::all();
-        return view('Estoques.index')->with('estoques', $estoques);
+        $estoques = Estoques::with(['produto', 'local', 'usuario'])->get();
+        return view('estoques.index', compact('estoques'));
     }
 
     public function create()
     {
-        return view('Estoques.create');
+        $produtos = Produtos::all();
+        $locais = Locais::all();
+        return view('estoques.create', compact('produtos', 'locais'));
     }
 
     public function store(Request $request)
@@ -28,11 +34,12 @@ class estoquesController extends Controller
         ]);
 
         // Criação de um novo estoque
-        $estoque = new Estoques();
-        $estoque->produto_id = $request->input('produto_id');
-        $estoque->local_id = $request->input('local_id');
-        $estoque->quantidade = $request->input('quantidade');
-        $estoque->save();
+        Estoques::create([
+            'produto_id' => $request->produto_id,
+            'local_id' => $request->local_id,
+            'quantidade' => $request->quantidade,
+            'usuario_id' => Auth::id(), // Assumindo que o usuário está autenticado
+        ]);
 
         // Redirecionamento com mensagem de sucesso
         return redirect()->route('estoques.index')->with('msg', 'Estoque cadastrado com sucesso!');
@@ -40,11 +47,11 @@ class estoquesController extends Controller
 
     public function show($id)
     {
-        $estoque = Estoques::find($id);
+        $estoque = Estoques::with(['produto', 'local', 'usuario'])->find($id);
         if ($estoque) {
-            return view('Estoques.show')->with('estoque', $estoque);
+            return view('estoques.show', compact('estoque'));
         } else {
-            return view('Estoques.show')->with('msg', 'Estoque não encontrado!');
+            return view('estoques.show')->with('msg', 'Estoque não encontrado!');
         }
     }
 
@@ -55,7 +62,10 @@ class estoquesController extends Controller
             return redirect()->route('estoques.index')->with('msg', 'Estoque não encontrado!');
         }
 
-        return view('Estoques.edit')->with('estoque', $estoque);
+        $produtos = Produtos::all();
+        $locais = Locais::all();
+
+        return view('estoques.edit', compact('estoque', 'produtos', 'locais'));
     }
 
     public function update(Request $request, $id)
@@ -74,10 +84,12 @@ class estoquesController extends Controller
         }
 
         // Atualiza os dados do estoque com base nos dados do formulário
-        $estoque->produto_id = $request->input('produto_id');
-        $estoque->local_id = $request->input('local_id');
-        $estoque->quantidade = $request->input('quantidade');
-        $estoque->save();
+        $estoque->update([
+            'produto_id' => $request->produto_id,
+            'local_id' => $request->local_id,
+            'quantidade' => $request->quantidade,
+            'usuario_id' => Auth::id(), // Atualiza o usuário que fez a alteração
+        ]);
 
         // Redireciona de volta para a lista de estoques com mensagem de sucesso
         return redirect()->route('estoques.index')->with('msg', 'Estoque atualizado com sucesso!');

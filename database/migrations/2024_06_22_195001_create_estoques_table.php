@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateEstoquesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('produto_id')->constrained('produtos')->onDelete('cascade');
             $table->foreignId('local_id')->constrained('locais')->onDelete('cascade');
+            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade'); 
             $table->integer('quantidade');
             $table->timestamps();
         });
@@ -27,4 +28,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('estoques');
     }
-};
+}

@@ -13,6 +13,7 @@
                     <th>Produto</th>
                     <th>Local</th>
                     <th>Quantidade</th>
+                    <th>Usuário</th>
                     <th colspan="2">Opções</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                         <td>{{ $estoque->produto->nome }}</td>
                         <td>{{ $estoque->local->nome }}</td>
                         <td>{{ $estoque->quantidade }}</td>
+                        <td>{{ $estoque->usuario->nome }}</td> 
                         <td><a href="{{ route('estoques.show', $estoque->id) }}">Exibir</a></td>
                         <td><a href="{{ route('estoques.edit', $estoque->id) }}">Editar</a></td>
                     </tr>
@@ -30,7 +32,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="5">Estoques Cadastrados: {{ $estoques->count() }}</td>
+                    <td colspan="6">Estoques Cadastrados: {{ $estoques->count() }}</td>
                 </tr>
             </tfoot>
         </table>
