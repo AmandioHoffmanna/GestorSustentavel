@@ -8,8 +8,8 @@
     @else
     {{-- senão, mostra os daddos --}}
         <h2>Mostrando dados dos Usuários</h2>
-        <p><strong>Nome:</strong> {{ $usuarios->nome }} </p>
-        <p><strong>Cpf:</strong> {{ $usuarios->cpf }} </p>
+        <p><strong>Nome:</strong> {{ $usuario->nome }} </p>
+        <p><strong>Cpf:</strong> {{ $usuario->cpf }} </p>
         <a href="{{ route('usuarios.index') }}">Voltar</a>
     @endif
 @endsection

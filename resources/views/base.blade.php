@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- Pegando as variáveis de ambiente --}}
     <title>Gestor Sustentável</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
@@ -15,7 +14,6 @@
         </header>
         <nav>
             <ul>
-                {{-- Links para o cadastro --}}
                 <li><a href="/usuarios">Usuários</a></li>
                 <li><a href="/usuarios/create">Cadastro de Usuários</a></li>
                 <li><a href="/produtos">Produtos</a></li>
@@ -23,10 +21,15 @@
                 <li><a href="/locais">Locais</a></li>
                 <li><a href="/locais/create">Cadastro de Locais</a></li>
                 <li><a href="/estoques">Estoque</a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Sair</button>
+                    </form>
+                </li>
             </ul>
         </nav>
         <div class="content">
-            {{-- o conteúdo da view específica será injetado aqui! --}}
             @yield('content')
         </div>
         <footer>
@@ -36,7 +39,6 @@
             </div>
             <div>
                 <p>Programação Web II</p>
-                <!-- <p><a href="https://www.jlgregorio.com.br" target="_blank">Meu Site Oficial</a></p> -->
             </div>
         </footer>
     </div>

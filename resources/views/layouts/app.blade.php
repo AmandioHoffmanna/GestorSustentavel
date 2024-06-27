@@ -66,6 +66,12 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
+                                    <!-- botão de logout -->
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit">Sair</button>
+                                    </form>
                                 </div>
                             </li>
                         @endguest
