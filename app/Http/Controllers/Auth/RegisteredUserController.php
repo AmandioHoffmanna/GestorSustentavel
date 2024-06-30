@@ -44,6 +44,6 @@ class RegisteredUserController extends Controller
         // Optionally, you may automatically authenticate the user after registration
         // auth()->login($user);
 
-        return redirect()->route('dashboard'); // Replace 'dashboard' with your desired redirect route after registration
+        return redirect()->route('login'); // Replace 'dashboard' with your desired redirect route after registration
     }
 }

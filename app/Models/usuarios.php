@@ -10,6 +10,8 @@ class Usuarios extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'usuarios';
+
     protected $fillable = [
         'nome', 'cpf', 'email', 'password',
     ];

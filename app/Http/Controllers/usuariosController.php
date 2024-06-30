@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // Importe a classe Auth aqui
-use App\Models\Usuarios; // Verifique se o namespace do seu modelo está correto
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usuarios; 
 use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
