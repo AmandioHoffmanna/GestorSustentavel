@@ -36,7 +36,15 @@ use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
+
+
 Route::resource('usuarios', UsuariosController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('estoques', EstoquesController::class);
+});
+
+Route::resource('estoques', EstoquesController::class)->middleware('auth');
 
 // Rota para fazer logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');

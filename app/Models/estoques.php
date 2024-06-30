@@ -9,11 +9,16 @@ class Estoques extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['produto_id', 'local_id', 'quantidade'];
+    protected $fillable = [
+        'produto_id',
+        'local_id',
+        'quantidade',
+        'usuario_id', // Adicione este campo
+    ];
 
     public function produto()
     {
-        return $this->belongsTo(produtos::class);
+        return $this->belongsTo(Produtos::class);
     }
 
     public function local()

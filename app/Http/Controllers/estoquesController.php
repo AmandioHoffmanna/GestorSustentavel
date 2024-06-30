@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Estoques;
 use App\Models\Produtos;
 use App\Models\Locais;
-use App\Models\usuarios; 
 use Illuminate\Support\Facades\Auth;
 
 class EstoquesController extends Controller
@@ -33,12 +32,18 @@ class EstoquesController extends Controller
             'quantidade' => 'required|integer|min:0',
         ]);
 
+        // Verificar se o usuário está autenticado
+        $userId = Auth::id();
+        if (!$userId) {
+            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
+        }
+
         // Criação de um novo estoque
         Estoques::create([
             'produto_id' => $request->produto_id,
             'local_id' => $request->local_id,
             'quantidade' => $request->quantidade,
-            'usuario_id' => Auth::id(), // Assumindo que o usuário está autenticado
+            'usuario_id' => $userId,
         ]);
 
         // Redirecionamento com mensagem de sucesso
@@ -51,7 +56,7 @@ class EstoquesController extends Controller
         if ($estoque) {
             return view('estoques.show', compact('estoque'));
         } else {
-            return view('estoques.show')->with('msg', 'Estoque não encontrado!');
+            return redirect()->route('estoques.index')->with('msg', 'Estoque não encontrado!');
         }
     }
 

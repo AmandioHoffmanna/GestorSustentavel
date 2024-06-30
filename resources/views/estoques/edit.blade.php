@@ -1,9 +1,9 @@
-@extends('base')
+@extends('layouts.app')
 
 @section('content')
-    <h2>Editar Local</h2>
+<div class="container">
+    <h1>Editar Estoque</h1>
 
-    {{-- Exibir mensagens de erro de validação --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -15,20 +15,38 @@
     @endif
 
     {{-- Formulário de edição --}}
-    <form class="form" method="POST" action="{{ route('locais.update', $local->id) }}">
+    <form class="form" method="POST" action="{{ route('estoques.update', $estoque->id) }}">
         @csrf
         @method('PUT') {{-- Método HTTP PUT para atualização --}}
+        
         <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome" value="{{ $local->nome }}" required>
+            <label for="produto_id">Produto:</label>
+            <select name="produto_id" id="produto_id" required>
+                @foreach ($produtos as $produto)
+                    <option value="{{ $produto->id }}" {{ $estoque->produto_id == $produto->id ? 'selected' : '' }}>
+                        {{ $produto->nome }}
+                    </option>
+                @endforeach
+            </select>
         </div>
+        
         <div class="form-group">
-            <label for="endereco">Endereço:</label>
-            <input type="text" name="endereco" id="endereco" value="{{ $local->endereco }}" required>
+            <label for="local_id">Local:</label>
+            <select name="local_id" id="local_id" required>
+                @foreach ($locais as $local)
+                    <option value="{{ $local->id }}" {{ $estoque->local_id == $local->id ? 'selected' : '' }}>
+                        {{ $local->nome }}
+                    </option>
+                @endforeach
+            </select>
         </div>
+        
         <div class="form-group">
-            <input type="submit" value="Salvar">
-            <a href="{{ route('locais.index') }}">Cancelar</a>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" name="quantidade" id="quantidade" value="{{ $estoque->quantidade }}" required>
         </div>
+
+        <button type="submit" class="btn btn-primary">Atualizar Estoque</button>
     </form>
+</div>
 @endsection
