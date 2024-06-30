@@ -1,26 +1,59 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6c788e; /* Exemplo de cor de fundo */
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px; /* Espaçamento entre os itens do menu */
+    color: black;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black; /* Cor do texto */
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+}
+
+/* Aplica margem e preenchimento zero a todos os elementos */
 *{
     margin: 0;
     padding: 0;
 }
-div.container{
-    width: 1200px;
-    margin: 0 auto;
+
+body{
+    background-color: #cfd5e1;
 }
-div.container > header {
-    background-color: darkblue;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-div.container > nav {
+
+/* Define estilos para o rodapé (footer) dentro de um div com a classe container */
+div.container > footer{
     background-color: lightblue;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+
+
 }
-div.container > nav li {
-    display: inline-block;
-    line-height: 2rem;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
-}
+
+/* Define estilos para links dentro do nav, independentemente de estar ativo, visitado ou sendo clicado */
 div.container > nav a:link,
 div.container > nav a:active,
 div.container > nav a:visited {
@@ -28,60 +61,92 @@ div.container > nav a:visited {
     color: darkblue;
     padding: 1rem;
 }
+
+/* Define estilos para lista items e links quando o mouse passa sobre eles */
 div.container > nav li:hover,
 div.container > nav a:hover {
     background-color: blue;
     color: white;
 }
+
+/* Define estilos para o conteúdo principal dentro de um div com a classe content */
 div.content{
-    min-height: 400px;
-    background-color: beige;
+    min-height: auto;
+    background-color: #cfd5e1;
     padding: 2rem;
 }
+
+/* Define estilos para títulos (h2) dentro do conteúdo */
 div.content h2 {
     border-bottom: medium darkblue solid;
     font-family: Arial;
     color: darkblue;
     margin-bottom: 3rem;
 }
-div.content p{
-    line-height: 1.5rem;
+
+/* Estilo geral para a tabela */
+.data-table {
+    width: 100%; /* Tabela preenche toda a largura disponível */
+    border-collapse: collapse; /* Remove o espaçamento entre células */
+    font-family: Arial, sans-serif; /* Fonte clara e legível */
+    color: #333; /* Cor do texto escuro */
+    background-color: #f9f9f9; /* Fundo claro */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
 }
-div.container > footer{
-    background-color: lightblue;
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
+
+/* Estilo para cabeçalho da tabela */
+.data-table thead {
+    background-color: #007bff; /* Cor de fundo azul para destaque */
+    color: white; /* Texto branco */
 }
-table.data-table{
-    border-spacing: 0;
+
+/* Estilo para as células da tabela */
+.data-table td,.data-table th {
+    border: 1px solid #ddd; /* Bordas finas e claras */
+    padding: 8px; /* Espaçamento interno confortável */
+    text-align: left; /* Alinhamento à esquerda */
 }
-table.data-table > thead{
-    background-color: darkblue;
-    color: white;
+
+/* Estilo para o rodapé da tabela */
+.data-table tfoot {
+    background-color: #f9f9f9; /* Mesmo fundo que o corpo da tabela */
+    color: #666; /* Texto um pouco mais claro */
 }
-table.data-table td, th {
-    border: solid thin black;
-    padding: 5px;
+
+/* Estilo para botões de opções */
+.data-table  button {
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Texto branco */
+    border: none; /* Sem borda */
+    padding: 6px 12px; /* Espaçamento interno adequado */
+    cursor: pointer; /* Indica que é clicável */
+    border-radius: 4px; /* Bordas arredondadas */
+    text-transform: uppercase; /* Texto em caixa alta para uniformidade */
 }
-table.data-table tfoot{
-    background-color: lightblue;
+
+/* Hover effect para botões */
+.data-table  button:hover {
+    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
 }
-table.data-table > tbody > tr:hover{
-    background-color: lightcyan;
-    cursor: pointer;
+
+/* Estilo para as células da tabela que contêm os botões */
+.data-table td:nth-last-child(2),
+.data-table td:last-child {
+    width: 80px; /* Diminui a largura das colunas para 80 pixels */
+    overflow: hidden; /* Evita que o conteúdo ultrapasse a largura definida */
+    text-overflow: ellipsis; /* Adiciona reticências (...) se o conteúdo for muito longo */
+    white-space: nowrap; /* Garante que o texto não quebre linha */
 }
-form.form label {
-    display: block;
-    padding-bottom: 0.3rem;
+
+/* Estilo para os botões dentro das células ajustadas */
+.data-table td:nth-last-child(2) button,
+.data-table td:last-child button {
+    width: 100%; /* Faz com que os botões ocupem todo o espaço disponível */
+    max-width: 80px; /* Limita a largura máxima dos botões para evitar que sejam muito grandes */
+    padding: 4px 8px; /* Reduz o espaçamento interno dos botões */
 }
-form.form input[type=text], form.form input[type=number] {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-}
-form.form input[type=submit], form.form input[type=reset], button{
-    padding: 0.5rem;
-    cursor: pointer;
-}
+
+
+
+
+

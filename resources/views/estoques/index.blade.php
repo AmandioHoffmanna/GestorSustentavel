@@ -25,8 +25,8 @@
                         <td>{{ $estoque->local->nome }}</td>
                         <td>{{ $estoque->quantidade }}</td>
                         <td>{{ $estoque->usuario->nome }}</td> 
-                        <td><a href="{{ route('estoques.show', $estoque->id) }}">Exibir</a></td>
-                        <td><a href="{{ route('estoques.edit', $estoque->id) }}">Editar</a></td>
+                        <td><button onclick="window.location.href='{{ route('estoques.show', $estoque->id) }}'">Exibir</button></td>
+                        <td><button onclick="window.location.href='{{ route('estoques.edit', $estoque->id) }}'">Editar</button></td>
                     </tr>
                 @endforeach
             </tbody>

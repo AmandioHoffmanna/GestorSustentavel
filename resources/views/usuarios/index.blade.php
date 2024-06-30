@@ -8,34 +8,31 @@
         <h3 style="color: red">Nenhum Registro Encontrado!</h3>
         {{-- senão, monta a tabela com o dados --}}
     @else
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th colspan="2">Opções</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- itera sobre a coleção de usuarios --}}
-                @foreach ($usuarios as $v)
-                    <tr>
-                        <td>{{ $v->nome }} </td>
-                        <td> {{ $v->cpf }} </td>
-                        <!-- <td> {{ $v->color }} </td> -->
-                        {{-- vai para a rota show, passando o id como parâmetro --}}
-                        <td> <a href="{{ route('usuarios.show', $v->id) }}">Exibir</a> </td>
-                        <td> <a href="{{ route('usuarios.edit', $v->id) }}">Editar</a> </td>
-                    </tr>
-                @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    {{-- mostra a qtde de usuarios cadastrados. --}}
-                    <td colspan="5">Usuários Cadastrados: {{ $usuarios->count() }}</td>
-                </tr>
-            </tfoot>
-        </table>
+    <table class="data-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th colspan="2">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($usuarios as $v)
+            <tr>
+                <td>{{ $v->nome }}</td>
+                <td>{{ $v->cpf }}</td>
+                <td><button onclick="window.location.href='{{ route('usuarios.show', $v->id) }}'">Exibir</button></td>
+                <td><button onclick="window.location.href='{{ route('usuarios.edit', $v->id) }}'">Editar</button></td>
+            </tr>
+        @endforeach
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">Usuários Cadastrados: {{ $usuarios->count() }}</td>
+        </tr>
+    </tfoot>
+</table>
+
     @endif
     @if(isset($msg))
         <script>

@@ -17,8 +17,8 @@
                 @foreach ($produtos as $produto)
                     <tr>
                         <td>{{ $produto->nome }}</td>
-                        <td><a href="{{ route('produtos.show', $produto->id) }}">Exibir</a></td>
-                        <td><a href="{{ route('produtos.edit', $produto->id) }}">Editar</a></td>
+                        <td><button onclick="window.location.href='{{ route('produtos.show', $produto->id) }}'">Exibir</button></td>
+                        <td><button onclick="window.location.href='{{ route('produtos.edit', $produto->id) }}'">Editar</button></td>
                     </tr>
                 @endforeach
             </tbody>

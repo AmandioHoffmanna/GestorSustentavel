@@ -19,8 +19,8 @@
                     <tr>
                         <td>{{ $local->nome }}</td>
                         <td>{{ $local->endereco }}</td>
-                        <td><a href="{{ route('locais.show', $local->id) }}">Exibir</a></td>
-                        <td><a href="{{ route('locais.edit', $local->id) }}">Editar</a></td>
+                        <td><button onclick="window.location.href='{{ route('locais.show', $local->id) }}'">Exibir</button></td>
+                        <td><button onclick="window.location.href='{{ route('locais.edit', $local->id) }}'">Editar</button></td>
                     </tr>
                 @endforeach
             </tbody>
