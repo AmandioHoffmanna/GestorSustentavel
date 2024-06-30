@@ -1,7 +1,11 @@
 @extends('base')
 
 @section('content')
-    <h2>Produtos Cadastrados</h2>
+    <h2>Produtos</h2>
+
+    <form class="btn-incluir" action="{{ route('produtos.create') }}" method="GET">
+        <button type="submit" class="btn btn-success">Incluir</button>
+    </form>
 
     @if ($produtos->isEmpty())
         <h3 style="color: red">Nenhum Produto Encontrado!</h3>
@@ -10,7 +14,7 @@
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th colspan="2">Opções</th>
+                    <th colspan="3">Opções</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +23,13 @@
                         <td>{{ $produto->nome }}</td>
                         <td><button onclick="window.location.href='{{ route('produtos.show', $produto->id) }}'">Exibir</button></td>
                         <td><button onclick="window.location.href='{{ route('produtos.edit', $produto->id) }}'">Editar</button></td>
+                        <td>
+                            <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

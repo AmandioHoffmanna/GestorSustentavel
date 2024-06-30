@@ -58,6 +58,11 @@ Route::get('register', [RegisteredUserController::class, 'create'])
 Route::post('register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
 
+// No arquivo routes/web.php
+
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 
     

@@ -130,8 +130,7 @@ div.content h2 {
 }
 
 /* Estilo para as células da tabela que contêm os botões */
-.data-table td:nth-last-child(2),
-.data-table td:last-child {
+.data-table td:not(:first-child) { /* Aplica estilos a todas as células exceto a primeira */
     width: 80px; /* Diminui a largura das colunas para 80 pixels */
     overflow: hidden; /* Evita que o conteúdo ultrapasse a largura definida */
     text-overflow: ellipsis; /* Adiciona reticências (...) se o conteúdo for muito longo */
@@ -139,8 +138,7 @@ div.content h2 {
 }
 
 /* Estilo para os botões dentro das células ajustadas */
-.data-table td:nth-last-child(2) button,
-.data-table td:last-child button {
+.data-table td:not(:first-child) button {
     width: 100%; /* Faz com que os botões ocupem todo o espaço disponível */
     max-width: 80px; /* Limita a largura máxima dos botões para evitar que sejam muito grandes */
     padding: 4px 8px; /* Reduz o espaçamento interno dos botões */
@@ -148,5 +146,52 @@ div.content h2 {
 
 
 
+.button-personalizado {
+    background-color: #28a745; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
+    transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
+}
+
+.btn-personalizado:hover {
+    background-color: #218838; /* Cor de fundo mais escura ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.btn-incluir button {
+    background-color: #28a745; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 7px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
+    transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
+}
+
+.btn-incluir button:hover {
+    background-color: #218838; /* Cor de fundo mais escura ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+#btn-sair{
+    background-color: brown; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 3px 15px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
+    transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
+}
+
+#btn-sair:hover {
+    background-color: red; /* Cor de fundo mais escura ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
 
 

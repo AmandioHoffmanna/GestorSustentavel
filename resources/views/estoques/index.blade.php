@@ -1,7 +1,11 @@
 @extends('base')
 
 @section('content')
-    <h2>Estoques Cadastrados</h2>
+    <h2>Gerenciamento estoque</h2>
+
+    <form class="btn-incluir" action="{{ route('estoques.create') }}" method="GET">
+        <button type="submit" class="btn btn-success">Incluir</button>
+    </form>
 
     @if ($estoques->isEmpty())
         <h3 style="color: red">Nenhum Estoque Encontrado!</h3>
@@ -14,7 +18,7 @@
                     <th>Local</th>
                     <th>Quantidade</th>
                     <th>Usuário</th>
-                    <th colspan="2">Opções</th>
+                    <th colspan="3">Opções</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +31,13 @@
                         <td>{{ $estoque->usuario->nome }}</td> 
                         <td><button onclick="window.location.href='{{ route('estoques.show', $estoque->id) }}'">Exibir</button></td>
                         <td><button onclick="window.location.href='{{ route('estoques.edit', $estoque->id) }}'">Editar</button></td>
+                        <td>
+                            <form action="{{ route('estoques.destroy', $estoque->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
