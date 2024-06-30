@@ -7,10 +7,17 @@ use App\Models\Locais;
 
 class LocaisController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $locais = Locais::all();
-        return view('Locais.index')->with('locais', $locais);
+        $query = Locais::query();
+
+        if ($request->has('local') && !is_null($request->local)) {
+            $query->where('nome', 'like', '%'. $request->local. '%');
+        }
+
+        $locais = $query->paginate(20);
+
+        return view('locais.index', compact('locais'));
     }
 
     public function create()

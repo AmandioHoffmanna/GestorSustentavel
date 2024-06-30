@@ -3,6 +3,28 @@
 @section('content')
     <h2>Gerenciamento estoque</h2>
 
+    <form method="GET" action="{{ route('estoques.index') }}">
+        <div class="filtro">
+            <span class="input-group-text">Produto:</span>
+            <input type="text" name="produto" value="{{ request('produto') }}" class="form-control">
+        </div>
+        <div class="filtro">
+            <span class="input-group-text">Local:</span>
+            <input type="text" name="local" value="{{ request('local') }}" class="form-control">
+        </div>
+        <div class="filtro">
+            <span class="input-group-text">Quantidade Mínima:</span>
+            <input type="number" name="min_quantidade" value="{{ request('min_quantidade') }}" class="form-control">
+        </div>
+        <div class="filtro">
+            <span class="input-group-text">Usuário:</span>
+            <input type="text" name="usuario" value="{{ request('usuario') }}" class="form-control">
+        </div>
+        <button type="submit" class="btn-consultar">Consultar</button>
+    </form>
+
+
+
     <form class="btn-incluir" action="{{ route('estoques.create') }}" method="GET">
         <button type="submit" class="btn btn-success">Incluir</button>
     </form>

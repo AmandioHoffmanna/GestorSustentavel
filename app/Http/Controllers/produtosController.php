@@ -7,10 +7,17 @@ use App\Models\Produtos;
 
 class ProdutosController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $produtos = Produtos::all();
-        return view('Produtos.index')->with('produtos', $produtos);
+        $query = Produtos::query();
+
+        if ($request->has('produto') && !is_null($request->produto)) {
+            $query->where('nome', 'like', '%'. $request->produto. '%');
+        }
+
+        $produtos = $query->paginate(20);
+
+        return view('produtos.index', compact('produtos'));
     }
 
     public function create()

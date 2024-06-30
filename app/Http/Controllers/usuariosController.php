@@ -9,10 +9,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = Usuarios::all();
-        return view('usuarios.index')->with('usuarios', $usuarios);
+        $query = Usuarios::query();
+
+        if ($request->has('usuario') && !is_null($request->usuario)) {
+            $query->where('nome', 'like', '%'. $request->usuario. '%');
+        }
+
+        $usuarios = $query->paginate(20);
+
+        return view('usuarios.index', compact('usuarios'));
     }
 
     public function create()

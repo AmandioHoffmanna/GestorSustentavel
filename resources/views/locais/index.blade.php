@@ -3,6 +3,14 @@
 @section('content')
     <h2>Locais</h2>
 
+    <form method="GET" action="{{ route('locais.index') }}">
+        <div class="filtro">
+            <span class="input-group-text">Local:</span>
+            <input type="text" name="local" value="{{ request('local') }}" class="form-control">
+        </div>
+        <button type="submit" class="btn-consultar">Consultar</button>
+    </form>
+
     <form class="btn-incluir" action="{{ route('locais.create') }}" method="GET">
         <button type="submit" class="btn btn-success">Incluir</button>
     </form>

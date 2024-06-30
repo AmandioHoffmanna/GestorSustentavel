@@ -144,39 +144,40 @@ div.content h2 {
     padding: 4px 8px; /* Reduz o espaçamento interno dos botões */
 }
 
-
-
-.button-personalizado {
-    background-color: #28a745; /* Cor de fundo verde */
-    color: white; /* Cor do texto branco */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
-    border: none; /* Remove a borda padrão */
-    cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
-    transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
-}
-
-.btn-personalizado:hover {
-    background-color: #218838; /* Cor de fundo mais escura ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
-}
-
 .btn-incluir button {
-    background-color: #28a745; /* Cor de fundo verde */
+    background-color: #007BFF; /* Cor de fundo verde */
     color: white; /* Cor do texto branco */
     border-radius: 5px; /* Bordas arredondadas */
     padding: 7px 20px; /* Espaçamento interno */
     font-size: 16px; /* Tamanho da fonte */
+    margin-top: 10px;
+    margin-bottom: 5px;
     border: none; /* Remove a borda padrão */
     cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
     transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
 }
 
 .btn-incluir button:hover {
-    background-color: #218838; /* Cor de fundo mais escura ao passar o mouse */
+    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
+
+.btn-consultar {
+    background-color: #007BFF; /* Cor de fundo azul */
+    color: white; /* Cor do texto branco */
+    border: none; /* Remove a borda padrão */
+    padding: 6px 10px; /* Espaçamento interno para dar volume ao botão */
+    font-size: 16px; /* Tamanho da fonte */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para um ponteiro quando sobre o botão */
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+  }
+  
+  /* Adiciona um efeito hover para mudar a cor de fundo ao passar o mouse */
+  .btn-consultar:hover {
+    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
+  }
+  
 
 #btn-sair{
     background-color: brown; /* Cor de fundo verde */
@@ -194,4 +195,18 @@ div.content h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
+.filtro {
+    display: inline-block; /* Faz com que os elementos.filtro fiquem lado a lado */
+    margin-right: 20px; /* Adiciona algum espaço à direita de cada elemento.filtro */
+}
 
+.input-group-text {
+    display: block; /* Garante que o span ocupe toda a largura disponível */
+    text-align: left; /* Alinha o texto à direita */
+    margin-bottom: 5px; /* Adiciona algum espaço abaixo do span */
+}
+
+.form-control {
+    width: 200px; /* Define uma largura fixa para os inputs */
+    box-sizing: border-box; /* Garante que a largura inclua a borda e o padding */
+}

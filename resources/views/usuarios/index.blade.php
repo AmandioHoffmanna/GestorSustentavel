@@ -5,6 +5,14 @@
     <h2>Usuários</h2>
     {{-- se a variável $usuarios não existir, mostra um h3 com uma mensagem --}}
    
+    <form method="GET" action="{{ route('usuarios.index') }}">
+        <div class="filtro">
+            <span class="input-group-text">Usuário:</span>
+            <input type="text" name="usuario" value="{{ request('usuario') }}" class="form-control">
+        </div>
+        <button type="submit" class="btn-consultar">Consultar</button>
+    </form>
+
     <form class="btn-incluir" action="{{ route('usuarios.create') }}" method="GET">
         <button type="submit" class="btn btn-success">Incluir</button>
     </form>

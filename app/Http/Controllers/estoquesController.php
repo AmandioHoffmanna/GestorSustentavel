@@ -10,9 +10,34 @@ use Illuminate\Support\Facades\Auth;
 
 class EstoquesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $estoques = Estoques::with(['produto', 'local', 'usuario'])->get();
+        $query = Estoques::with(['produto', 'local', 'usuario']);
+    
+        if ($request->has('produto') && !is_null($request->produto)) {
+            $query->whereHas('produto', function ($q) use ($request) {
+                $q->where('nome', 'like', '%'. $request->produto. '%');
+            });
+        }
+    
+        if ($request->has('local') && !is_null($request->local)) {
+            $query->whereHas('local', function ($q) use ($request) {
+                $q->where('nome', 'like', '%'. $request->local. '%');
+            });
+        }
+
+        if ($request->has('usuario') && !is_null($request->usuario)) {
+            $query->whereHas('usuario', function ($q) use ($request) {
+            $q->where('nome', 'like', '%'. $request->usuario. '%');
+            });
+        }
+    
+        if ($request->has('min_quantidade') &&  !is_null($request->min_quantidade)) {
+            $query->where('quantidade', '>=', $request->min_quantidade);
+        }
+    
+        $estoques = $query->paginate(20);
+    
         return view('estoques.index', compact('estoques'));
     }
 

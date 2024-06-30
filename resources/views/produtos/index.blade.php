@@ -3,6 +3,14 @@
 @section('content')
     <h2>Produtos</h2>
 
+    <form method="GET" action="{{ route('produtos.index') }}">
+    <div class="filtro">
+        <span class="input-group-text">Produto:</span>
+        <input type="text" name="produto" value="{{ request('produto') }}" class="form-control">
+    </div>
+    <button type="submit" class="btn-consultar">Consultar</button>
+    </form>
+
     <form class="btn-incluir" action="{{ route('produtos.create') }}" method="GET">
         <button type="submit" class="btn btn-success">Incluir</button>
     </form>
