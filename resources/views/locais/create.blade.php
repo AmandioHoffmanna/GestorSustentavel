@@ -25,6 +25,10 @@
             <label for="endereco">Endereço:</label>
             <input type="text" name="endereco" id="endereco" value="{{ old('endereco') }}" required>
         </div>
+        <div>
+            <label for="horario_funcionamento">Horário de Funcionamento:</label>
+            <input type="text" name="horario_funcionamento" id="horario_funcionamento" value="{{ old('horario_funcionamento') }}">
+        </div>
         <div class="form-group">
             <input type="submit" value="Salvar">
             <input type="reset" value="Limpar">

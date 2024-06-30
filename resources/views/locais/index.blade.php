@@ -23,6 +23,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>Endereço</th>
+                    <th>Horário de Funcionamento</th>
                     <th colspan="3">Opções</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                     <tr>
                         <td id="nomeLocal">{{ $local->nome }}</td>
                         <td id="endereco">{{ $local->endereco }}</td>
+                        <td id="endereco">{{ $local->horario_funcionamento }}</td>
                         <td><button onclick="window.location.href='{{ route('locais.show', $local->id) }}'">Exibir</button></td>
                         <td><button onclick="window.location.href='{{ route('locais.edit', $local->id) }}'">Editar</button></td>
                         <td>

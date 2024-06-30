@@ -7,6 +7,7 @@
         <h2>Dados do Local</h2>
         <p><strong>Nome:</strong> {{ $local->nome }}</p>
         <p><strong>Endereco:</strong> {{ $local->endereco }}</p>
+        <p><strong>Horário de Funcionamento:</strong> {{ $local->horario_funcionamento }}</p>
         <a href="{{ route('locais.index') }}">Voltar</a>
     @endif
 @endsection

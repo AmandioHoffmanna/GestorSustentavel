@@ -27,6 +27,10 @@
             <input type="text" name="endereco" id="endereco" value="{{ $local->endereco }}" required>
         </div>
         <div class="form-group">
+            <label for="horario_funcionamento">Horário de Funcionamento:</label>
+            <input type="text" name="horario_funcionamento" id="horario_funcionamento" value="{{ $local->horario_funcionamento }}" required>
+        </div>
+        <div class="form-group">
             <input type="submit" value="Salvar">
             <a href="{{ route('locais.index') }}">Cancelar</a>
         </div>

@@ -9,7 +9,7 @@ class Locais extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'endereco'];
+    protected $fillable = ['nome', 'endereco', 'horario_funcionamento'];
 
     public function estoques()
     {
