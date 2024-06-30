@@ -39,16 +39,15 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 Route::resource('usuarios', UsuariosController::class);
 
 // Rota para fazer logout
-Route::post('logout', [UsuariosController::class, 'logout'])->name('logout');
-
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('estoques', EstoquesController::class);
-    Route::resource('locais', LocaisController::class);
-    Route::resource('produtos', ProdutosController::class);
+    Route::resource('locais', LocaisController::class); // Exemplo de recurso para LocaisController
+    Route::resource('produtos', ProdutosController::class); // Exemplo de recurso para ProdutosController
 });
 
 // Rotas para registro de usuário usando Fortify
@@ -58,5 +57,7 @@ Route::get('register', [RegisteredUserController::class, 'create'])
 
 Route::post('register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
+
+
 
     

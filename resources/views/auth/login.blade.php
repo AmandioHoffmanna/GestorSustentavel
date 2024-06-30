@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Gestor Sustentável</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Adicione outros estilos personalizados aqui, se necessário -->
     <style>
-        /* Adicione estilos personalizados aqui, se necessário */
         body {
             background-color: #f8f9fa; /* Cor de fundo suave */
             font-family: 'Arial', sans-serif; /* Fonte padrão */
@@ -68,12 +66,22 @@
 
         <div class="mb-3">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" id="email" name="email" class="form-control" required>
+            <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autofocus>
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Senha:</label>
-            <input type="password" id="password" name="password" class="form-control" required>
+            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary mb-3">Login</button>

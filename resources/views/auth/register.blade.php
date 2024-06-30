@@ -60,9 +60,19 @@
             @csrf
 
             <div class="mb-3">
-                <label for="name" class="form-label">Nome:</label>
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                @error('name')
+                <label for="nome" class="form-label">Nome:</label>
+                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="name" autofocus>
+                @error('nome')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF:</label>
+                <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ old('cpf') }}" required autocomplete="cpf">
+                @error('cpf')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -90,8 +100,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="password-confirm" class="form-label">Confirmar Senha:</label>
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                <label for="password_confirmation" class="form-label">Confirmar Senha:</label>
+                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
             </div>
 
             <div class="mb-3">

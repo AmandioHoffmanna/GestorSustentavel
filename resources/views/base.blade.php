@@ -26,10 +26,16 @@
                         <button type="submit">Sair</button>
                     </form>
                 </li>
+<<<<<<< HEAD
         </ul>
     </nav>
 </header>
         <div class="content">
+=======
+            </ul>
+        </nav>
+        <div class="content">   
+>>>>>>> ce6545219b62578dab55a9ccbefeb2cf22c45c5d
             @yield('content')
         </div>
         <footer>
