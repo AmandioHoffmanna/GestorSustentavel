@@ -22,9 +22,6 @@
         </div>
         <button type="submit" class="btn-consultar">Consultar</button>
     </form>
-
-
-
     <form class="btn-incluir" action="{{ route('estoques.create') }}" method="GET">
         <button type="submit" class="btn btn-success">Incluir</button>
     </form>

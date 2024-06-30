@@ -5,31 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gestor Sustentável</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
 <body>
     <div class="container">
-    <header>
-    <h1>Gestor Sustentável</h1>
-    <nav>
-        <ul>
-            <li><a href="/usuarios">Usuários</a></li>
-            <li><a href="/produtos">Produtos</a></li>
-            <li><a href="/locais">Locais</a></li>
-            <li><a href="/estoques">Estoques</a></li>
-            <!--<li><a href="/usuarios/create">Cadastro de Usuários</a></li>
-            <li><a href="/produtos/create">Cadastro de Produtos</a></li>
-            <li><a href="/locais/create">Cadastro de Locais</a></li>-->
-            <li>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button id="btn-sair" type="submit">Sair</button>
-                    </form>
-                </li>
-        </ul>
-    </nav>
-</header>
-<div class="content">
+        <header>
+            <h1>Gestor Sustentável</h1>
+            <nav>
+                <ul>
+                    <li><a href="/usuarios">Usuários</a></li>
+                    <li><a href="/produtos">Produtos</a></li>
+                    <li><a href="/locais">Locais</a></li>
+                    <li><a href="/estoques">Estoques</a></li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button id="btn-sair" type="submit">Sair</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content">
             @yield('content')
         </div>
         <footer>

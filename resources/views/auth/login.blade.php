@@ -27,6 +27,11 @@
             margin-bottom: 20px; /* Espaçamento inferior do título */
             text-align: center;
         }
+        .login-container h6 {
+            margin-bottom: 20px; /* Espaçamento inferior do título */
+            text-align: center;
+            color: #0056b3;
+        }
         .login-container form {
             display: flex;
             flex-direction: column;
@@ -60,6 +65,7 @@
 
 <div class="login-container">
     <h2>Login</h2>
+    <h6>Gestor Sustentável</h6>
 
     <form action="{{ route('login') }}" method="POST">
         @csrf
