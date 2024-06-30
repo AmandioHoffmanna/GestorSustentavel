@@ -43,7 +43,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Produtos Cadastrados: {{ $produtos->count() }}</td>
+                    <td colspan="1">Produtos Cadastrados: {{ $produtos->count() }}</td>
                 </tr>
             </tfoot>
         </table>

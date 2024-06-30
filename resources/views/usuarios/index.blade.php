@@ -1,10 +1,6 @@
-{{-- herda a view 'base' --}}
 @extends('base')
-{{-- cria a seção content, definida na base, para injetar o código --}}
 @section('content')
     <h2>Usuários</h2>
-    {{-- se a variável $usuarios não existir, mostra um h3 com uma mensagem --}}
-   
     <form method="GET" action="{{ route('usuarios.index') }}">
         <div class="filtro">
             <span class="input-group-text">Usuário:</span>
@@ -32,8 +28,8 @@
     <tbody>
         @foreach ($usuarios as $usuario)
             <tr>
-                <td>{{ $usuario->nome }}</td>
-                <td>{{ $usuario->cpf }}</td>
+                <td id="tdNomeUsuario">{{ $usuario->nome }}</td>
+                <td id="tdCpfUsuario">{{ $usuario->cpf }}</td>
                 <td><button onclick="window.location.href='{{ route('usuarios.show', $usuario->id) }}'">Exibir</button></td>
                 <td><button onclick="window.location.href='{{ route('usuarios.edit', $usuario->id) }}'">Editar</button></td>
                 <td>
@@ -48,7 +44,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5">Usuários Cadastrados: {{ $usuarios->count() }}</td>
+            <td colspan="2">Usuários Cadastrados: {{ $usuarios->count() }}</td>
         </tr>
     </tfoot>
 </table>
@@ -60,3 +56,7 @@
         </script>
     @endif
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/usuario.css">
+</head>

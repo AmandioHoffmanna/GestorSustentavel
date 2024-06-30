@@ -46,11 +46,11 @@
             <tbody>
                 @foreach ($estoques as $estoque)
                     <tr>
-                        <td>{{ $estoque->id }}</td>
-                        <td>{{ $estoque->produto->nome }}</td>
-                        <td>{{ $estoque->local->nome }}</td>
-                        <td>{{ $estoque->quantidade }}</td>
-                        <td>{{ $estoque->usuario->nome }}</td> 
+                        <td id="tdId">{{ $estoque->id }}</td>
+                        <td id="tdProdutoNome">{{ $estoque->produto->nome }}</td>
+                        <td id="tdLocalNome">{{ $estoque->local->nome }}</td>
+                        <td id="tdQuantidade">{{ $estoque->quantidade }}</td>
+                        <td id="tdUsuarioNome">{{ $estoque->usuario->nome }}</td> 
                         <td><button onclick="window.location.href='{{ route('estoques.show', $estoque->id) }}'">Exibir</button></td>
                         <td><button onclick="window.location.href='{{ route('estoques.edit', $estoque->id) }}'">Editar</button></td>
                         <td>
@@ -65,7 +65,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="6">Estoques Cadastrados: {{ $estoques->count() }}</td>
+                    <td colspan="5">Estoques Cadastrados: {{ $estoques->count() }}</td>
                 </tr>
             </tfoot>
         </table>
@@ -77,3 +77,7 @@
         </script>
     @endif
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/gerenciamento.css">
+</head>

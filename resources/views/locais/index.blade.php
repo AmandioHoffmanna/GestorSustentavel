@@ -29,8 +29,8 @@
             <tbody>
                 @foreach ($locais as $local)
                     <tr>
-                        <td>{{ $local->nome }}</td>
-                        <td>{{ $local->endereco }}</td>
+                        <td id="nomeLocal">{{ $local->nome }}</td>
+                        <td id="endereco">{{ $local->endereco }}</td>
                         <td><button onclick="window.location.href='{{ route('locais.show', $local->id) }}'">Exibir</button></td>
                         <td><button onclick="window.location.href='{{ route('locais.edit', $local->id) }}'">Editar</button></td>
                         <td>
@@ -45,7 +45,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">Locais Cadastrados: {{ $locais->count() }}</td>
+                    <td colspan="2">Locais Cadastrados: {{ $locais->count() }}</td>
                 </tr>
             </tfoot>
         </table>
@@ -57,3 +57,7 @@
         </script>
     @endif
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/local.css">
+</head>
