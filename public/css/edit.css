@@ -1,0 +1,73 @@
+/* Estilizações gerais */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.formEdit {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Estilizações para o formulário */
+.form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.form-group select:focus,
+.form-group input[type="number"]:focus {
+    border-color: #80bdff;
+    outline: 0;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.formEdicao {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}

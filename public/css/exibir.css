@@ -1,0 +1,32 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para o título principal */
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para mensagens de erro ou sucesso */
+h3 {
+    color: #f00; /* Vermelho */
+    margin-bottom: 10px;
+}
+
+/* Estilo para os parágrafos */
+p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Estilo para links */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

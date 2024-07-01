@@ -8,8 +8,8 @@
         </div>
         <img src="{{ asset('fotoInicial.jpg') }}" alt="Descrição da Imagem">
         <p>A gestão sustentável é uma prática que busca harmonizar o desenvolvimento econômico com a preservação ambiental e social. Ela promove o uso eficiente dos recursos naturais, minimizando o impacto negativo nas gerações futuras.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, explicabo quam expedita recusandae possimus beatae? Asperiores voluptas at alias dignissimos eius reprehenderit, quae vero, nam velit cupiditate quas, quod ipsam!</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto atque ex animi! Vero minima neque quam, quisquam doloremque esse, vitae assumenda ut dolore quia placeat cum. Possimus voluptate sint laboriosam.</p>
+        <p>Diante disso, nosso objetivo é facilitar a destinação correta de lixos eletrônicos, visando informar os locais corretos para destinação do lixo, e a partir do momento que você passar os descartes para a nossa equipe fique tranquilo, o resíduo será destinado da forma correta.</p>
+        <p></p>
     </div>
 
 @endsection

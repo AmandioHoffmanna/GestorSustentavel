@@ -13,3 +13,7 @@
         <a href="{{ route('estoques.index') }}">Voltar</a>
     @endif
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/exibir.css">
+</head>

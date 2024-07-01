@@ -11,3 +11,7 @@
         <a href="{{ route('locais.index') }}">Voltar</a>
     @endif
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/exibir.css">
+</head>

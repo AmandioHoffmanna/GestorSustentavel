@@ -86,127 +86,127 @@ div.content h2 {
 
 /* Estilo geral para a tabela */
 .data-table {
-    width: 100%; /* Tabela preenche toda a largura disponível */
-    border-collapse: collapse; /* Remove o espaçamento entre células */
-    font-family: Arial, sans-serif; /* Fonte clara e legível */
-    color: #333; /* Cor do texto escuro */
-    background-color: #f9f9f9; /* Fundo claro */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Estilo para cabeçalho da tabela */
 .data-table thead {
-    background-color: #007bff; /* Cor de fundo azul para destaque */
-    color: white; /* Texto branco */
+    background-color: #007bff;
+    color: white;
 }
 
 /* Estilo para as células da tabela */
 .data-table td,.data-table th {
-    border: 1px solid #ddd; /* Bordas finas e claras */
-    padding: 8px; /* Espaçamento interno confortável */
-    text-align: left; /* Alinhamento à esquerda */
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
 }
 
 /* Estilo para o rodapé da tabela */
 .data-table tfoot {
-    background-color: #f9f9f9; /* Mesmo fundo que o corpo da tabela */
-    color: #666; /* Texto um pouco mais claro */
+    background-color: #f9f9f9;
+    color: #666;
 }
 
 /* Estilo para botões de opções */
 .data-table  button {
-    background-color: #007bff; /* Cor de fundo azul */
-    color: white; /* Texto branco */
-    border: none; /* Sem borda */
-    padding: 6px 12px; /* Espaçamento interno adequado */
-    cursor: pointer; /* Indica que é clicável */
-    border-radius: 4px; /* Bordas arredondadas */
-    text-transform: uppercase; /* Texto em caixa alta para uniformidade */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
 }
 
 /* Hover effect para botões */
 .data-table  button:hover {
-    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
+    background-color: #0056b3;
 }
 
 /* Estilo para as células da tabela que contêm os botões */
-.data-table td:not(:first-child) { /* Aplica estilos a todas as células exceto a primeira */
-    width: 80px; /* Diminui a largura das colunas para 80 pixels */
-    overflow: hidden; /* Evita que o conteúdo ultrapasse a largura definida */
-    text-overflow: ellipsis; /* Adiciona reticências (...) se o conteúdo for muito longo */
-    white-space: nowrap; /* Garante que o texto não quebre linha */
+.data-table td:not(:first-child) { 
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* Estilo para os botões dentro das células ajustadas */
 .data-table td:not(:first-child) button {
-    width: 100%; /* Faz com que os botões ocupem todo o espaço disponível */
-    max-width: 80px; /* Limita a largura máxima dos botões para evitar que sejam muito grandes */
-    padding: 4px 8px; /* Reduz o espaçamento interno dos botões */
+    width: 100%;
+    max-width: 80px;
+    padding: 4px 8px;
 }
 
 .btn-incluir button {
     background-color: #007BFF; /* Cor de fundo verde */
-    color: white; /* Cor do texto branco */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 7px 20px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
+    color: white;
+    border-radius: 5px;
+    padding: 7px 20px;
+    font-size: 16px;
     margin-top: 10px;
     margin-bottom: 5px;
-    border: none; /* Remove a borda padrão */
-    cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
-    transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn-incluir button:hover {
-    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-consultar {
-    background-color: #007BFF; /* Cor de fundo azul */
-    color: white; /* Cor do texto branco */
-    border: none; /* Remove a borda padrão */
-    padding: 6px 10px; /* Espaçamento interno para dar volume ao botão */
-    font-size: 16px; /* Tamanho da fonte */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Muda o cursor para um ponteiro quando sobre o botão */
-    transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
   /* Adiciona um efeito hover para mudar a cor de fundo ao passar o mouse */
   .btn-consultar:hover {
-    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
+    background-color: #0056b3;
   }
   
 
 #btn-sair{
-    background-color: brown; /* Cor de fundo verde */
-    color: white; /* Cor do texto branco */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 3px 15px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
-    border: none; /* Remove a borda padrão */
-    cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
-    transition: background-color 0.3s ease; /* Transição suave para mudanças de cor de fundo */
+    background-color: brown;
+    color: white;
+    border-radius: 5px;
+    padding: 3px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #btn-sair:hover {
-    background-color: red; /* Cor de fundo mais escura ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    background-color: red;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .filtro {
-    display: inline-block; /* Faz com que os elementos.filtro fiquem lado a lado */
-    margin-right: 20px; /* Adiciona algum espaço à direita de cada elemento.filtro */
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .input-group-text {
-    display: block; /* Garante que o span ocupe toda a largura disponível */
-    text-align: left; /* Alinha o texto à direita */
-    margin-bottom: 5px; /* Adiciona algum espaço abaixo do span */
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
 }
 
 .form-control {
-    width: 200px; /* Define uma largura fixa para os inputs */
-    box-sizing: border-box; /* Garante que a largura inclua a borda e o padding */
+    width: 200px;
+    box-sizing: border-box;
 }

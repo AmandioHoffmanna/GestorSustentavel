@@ -1,9 +1,10 @@
 @extends('base')
 
 @section('content')
-    <h2>Editar Produto</h2>
+<div class="formEdit">
+    <h1>Editar Produto</h1>
 
-    <form method="POST" action="{{ route('produtos.update', $produto->id) }}">
+    <form class="form" method="POST" action="{{ route('produtos.update', $produto->id) }}">
         @csrf
         @method('PUT')
 
@@ -15,4 +16,9 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
         <a href="{{ route('produtos.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
+</div>
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>

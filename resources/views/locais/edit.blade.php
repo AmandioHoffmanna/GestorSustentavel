@@ -1,9 +1,9 @@
 @extends('base')
 
 @section('content')
-    <h2>Editar Local</h2>
+<div class="formEdit">
+    <h1>Editar Local</h2>
 
-    {{-- Exibir mensagens de erro de validação --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -35,4 +35,10 @@
             <a href="{{ route('locais.index') }}">Cancelar</a>
         </div>
     </form>
+</div>
+
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>

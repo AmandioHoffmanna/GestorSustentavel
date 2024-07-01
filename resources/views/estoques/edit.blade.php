@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="container">
+<div class="formEdit">
     <h1>Editar Estoque</h1>
 
     @if ($errors->any())
@@ -47,6 +47,12 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Atualizar Estoque</button>
+        <a href="{{ route('estoques.index') }}" class="btn btn-secondary">Cancelar</a>
+
     </form>
 </div>
 @endsection
+
+<head>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
