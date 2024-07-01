@@ -13,6 +13,7 @@
             <h1>Gestor Sustentável</h1>
             <nav>
                 <ul>
+                    <li><a href="/homeInicial">Início</a></li>
                     <li><a href="/usuarios">Usuários</a></li>
                     <li><a href="/produtos">Produtos</a></li>
                     <li><a href="/locais">Locais</a></li>
