@@ -20,7 +20,7 @@
             <span class="input-group-text">Usuário:</span>
             <input type="text" name="usuario" value="{{ request('usuario') }}" class="form-control">
         </div>
-        <button type="submit" class="btn-consultar">Consultar</button>
+        <button type="submit" class="btn-consultar" title="Use este campo para filtrar os produtos pelo nome, local ou quantidade mínima. Você também pode especificar um usuário para restringir os resultados àquela pessoa.">Consultar</button>
     </form>
     <form class="btn-incluir" action="{{ route('estoques.create') }}" method="GET">
         <button type="submit" class="btn btn-success">Incluir</button>

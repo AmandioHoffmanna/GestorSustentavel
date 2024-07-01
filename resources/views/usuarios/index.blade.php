@@ -6,7 +6,7 @@
             <span class="input-group-text">Usuário:</span>
             <input type="text" name="usuario" value="{{ request('usuario') }}" class="form-control">
         </div>
-        <button type="submit" class="btn-consultar">Consultar</button>
+        <button type="submit" class="btn-consultar" title="Use este campo para filtrar usuários pelo nome.">Consultar</button>
     </form>
 
     <form class="btn-incluir" action="{{ route('usuarios.create') }}" method="GET">
