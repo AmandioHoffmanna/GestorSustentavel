@@ -102,12 +102,4 @@ class UsuariosController extends Controller
         return redirect()->route('usuarios.index')->with('msg', 'Usuário excluído com sucesso!');
     }
 
-    public function logout(Request $request)
-    {
-        Auth::logout(); // Faz o logout do usuário
-        $request->session()->invalidate(); // Invalida a sessão
-        $request->session()->regenerateToken(); // Regenera o token de sessão
-
-        return redirect('/login'); // Redireciona para a página de login após o logout
-    }
 }

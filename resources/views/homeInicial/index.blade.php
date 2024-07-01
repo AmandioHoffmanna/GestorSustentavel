@@ -1,6 +1,8 @@
 @extends('base')
 
 @section('content')
+
+<button class="botao-login" onclick="window.location.href='{{ route('login') }}'">Login</button>
     <div class="conteudo-centralizado">
         <div>
             <p>A destinação correta de lixos eletrônicos é fundamental para a saúde e bem-estar de todos nós. Equipamentos como telefones, computadores e televisões contêm substâncias perigosas que podem causar sérios problemas se liberadas no meio ambiente. Se esses resíduos forem descartados de forma inadequada, eles podem contaminar o solo e a água, ameaçando a vida animal e vegetal, e potencialmente afetando a qualidade da comida que consumimos.</p>
