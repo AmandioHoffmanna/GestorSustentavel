@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('estoques', EstoquesController::class);
     Route::resource('locais', LocaisController::class); // Exemplo de recurso para LocaisController
     Route::resource('produtos', ProdutosController::class); // Exemplo de recurso para ProdutosController
+    Route::resource('usuarios', UsuariosController::class); // Exemplo de recurso para ProdutosController
 });
 
 // Rotas para registro de usuário usando Fortify
